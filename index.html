@@ -11,7 +11,7 @@
     />
     <title>Parallax Sky</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Playwrite+IN:wght@100..400&family=Space+Grotesk:wght@300..700&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Playwrite+IN:wght@100..400&family=Space+Grotesk:wght@300..700&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Gantari:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap");
     </style>
 
@@ -72,21 +72,20 @@
 
       /* Stars animation */
       .sky-bg {
-    position: relative;
-    overflow: hidden;
-    background-color: #0c0c1d;
-  }
+        position: relative;
+        overflow: hidden;
+        background-color: #0c0c1d;
+      }
 
- 
       .star {
         position: absolute;
         width: 2px;
         height: 2px;
         background-color: white;
         border-radius: 50%;
-        
-    will-change: opacity;
-    backface-visibility: hidden;
+
+        will-change: opacity;
+        backface-visibility: hidden;
         animation: twinkle 2s infinite ease-in-out;
       }
 
@@ -154,594 +153,694 @@
         }
         #cloud2 {
           top: 35%;
-          right: 5%;
+          right: 25%;
         }
       }
     </style>
   </head>
-  <body style="overflow-x: hidden;">
+  <body style="overflow-x: hidden">
     <style>
       .circle {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          position: absolute; /* Changed from fixed */
-          pointer-events: none;
-          z-index: 9999;
-          transition: transform 0.1s ease-out;
-          transform: translate(-50%, -50%); /* Center cursor */
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        position: absolute; /* Changed from fixed */
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease-out;
+        transform: translate(-50%, -50%); /* Center cursor */
       }
-  </style>
-  <header>
+    </style>
+    <header>
+      <section id="cursor">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
 
-    <section id="cursor">
-      
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      
-      <script>
-        const colors = [
-          "#E6F7FF", "#C3E9FE", "#A0DCFD", "#7DCFFC", "#5AC2FB",
-          "#37B5FA", "#14A8F9", "#0099E6", "#008ACC", "#007BB3",
-          "#006C99", "#005D80", "#004E66", "#003F4D", "#003033",
-          "#00211A", "#001B33", "#00154D", "#000F66", "#000A80",
-          "#000499", "#0000B3"
-        ];
-        
-        const circles = document.querySelectorAll('.circle');
-        let mouseX = 0;
-        let mouseY = 0;
-        let scrollX = window.scrollX;
-        let scrollY = window.scrollY;
-        
-        // Initialize circles
-        circles.forEach((circle, index) => {
-          circle.style.backgroundColor = colors[index];
-          circle.x = 0;
-          circle.y = 0;
-        });
-        
-        // Track mouse and scroll
-        document.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-        });
-        
-        window.addEventListener('scroll', () => {
-          scrollX = window.scrollX;
-          scrollY = window.scrollY;
-        });
-        
-        // Animation loop with scroll compensation
-        function animate() {
-          const pageX = mouseX + scrollX;
-          const pageY = mouseY + scrollY;
-          
+        <script>
+          const colors = [
+            "#E6F7FF",
+            "#C3E9FE",
+            "#A0DCFD",
+            "#7DCFFC",
+            "#5AC2FB",
+            "#37B5FA",
+            "#14A8F9",
+            "#0099E6",
+            "#008ACC",
+            "#007BB3",
+            "#006C99",
+            "#005D80",
+            "#004E66",
+            "#003F4D",
+            "#003033",
+            "#00211A",
+            "#001B33",
+            "#00154D",
+            "#000F66",
+            "#000A80",
+            "#000499",
+            "#0000B3",
+          ];
+
+          const circles = document.querySelectorAll(".circle");
+          let mouseX = 0;
+          let mouseY = 0;
+          let scrollX = window.scrollX;
+          let scrollY = window.scrollY;
+
+          // Initialize circles
           circles.forEach((circle, index) => {
-            if(index === 0) {
-              circle.x = pageX;
-              circle.y = pageY;
-            } else {
-              const prevCircle = circles[index - 1];
-              circle.x += (prevCircle.x - circle.x) * 0.3;
-              circle.y += (prevCircle.y - circle.y) * 0.3;
-            }
-            
-            circle.style.transform = `translate(${circle.x}px, ${circle.y}px)
-            scale(${0.1 + (index * 0.04)})`;
+            circle.style.backgroundColor = colors[index];
+            circle.x = 0;
+            circle.y = 0;
           });
-          
-          requestAnimationFrame(animate);
-        }
-        
-        animate();
+
+          // Track mouse and scroll
+          document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+          });
+
+          window.addEventListener("scroll", () => {
+            scrollX = window.scrollX;
+            scrollY = window.scrollY;
+          });
+
+          // Animation loop with scroll compensation
+          function animate() {
+            const pageX = mouseX + scrollX;
+            const pageY = mouseY + scrollY;
+
+            circles.forEach((circle, index) => {
+              if (index === 0) {
+                circle.x = pageX;
+                circle.y = pageY;
+              } else {
+                const prevCircle = circles[index - 1];
+                circle.x += (prevCircle.x - circle.x) * 0.3;
+                circle.y += (prevCircle.y - circle.y) * 0.3;
+              }
+
+              circle.style.transform = `translate(${circle.x}px, ${circle.y}px)
+            scale(${0.1 + index * 0.04})`;
+            });
+
+            requestAnimationFrame(animate);
+          }
+
+          animate();
         </script>
+      </section>
 
-</section>
+      <div
+        class="w-100 d-flex justify-content-center align-items-center vh-100 sky-bg"
+      >
+        <p
+          id="text"
+          class="display-1"
+          style="font-family: 'Playwrite IN', serif"
+        >
+          All Events
+        </p>
+      </div>
+      <section id="sky" class="sky-bg">
+        <img src="/cloud.svg" alt="Cloud 1" id="cloud1" />
+        <img src="/cloud.svg" alt="Cloud 2" id="cloud2" />
+        <img src="/grass.webp" alt="Grass" id="grass" />
+        <img src="/moon.png" alt="Moon" id="moon" />
+      </section>
+    </header>
+    <main class="container">
+      <section id="Day1" class="p-5">
+        <style>
+          .event-grid {
+            display: flex;
+            gap: 20px;
 
+            padding: 50px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+          }
 
+          .event-grid::-webkit-scrollbar {
+            height: 8px;
+          }
 
+          .event-grid::-webkit-scrollbar-thumb {
+            background: #ff5722;
+            border-radius: 4px;
+          }
 
+          .event-grid::-webkit-scrollbar-track {
+            background: #ffe0b2;
+          }
 
+          /* Enhanced card design */
+          .event-card {
+            display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px; /* Set minimum height for consistency */
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+          }
 
+          .event-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+              45deg,
+              transparent,
+              rgba(255, 255, 255, 0.1),
+              transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            pointer-events: none;
+          }
 
+          .event-card:hover::before {
+            animation: shine 1.5s;
+          }
 
+          @keyframes shine {
+            0% {
+              left: -50%;
+            }
+            100% {
+              left: 150%;
+            }
+          }
 
+          .event-details {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+          }
 
+          .event-details h3 {
+            color: #ff6b6b;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+          }
 
+          .event-details h3::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: #4ecdc4;
+            font-size: 1.1rem;
+          }
 
-<div class="w-100 d-flex justify-content-center align-items-center vh-100 sky-bg" >
-  <p id="text" class="display-1 " style="font-family: 'Playwrite IN', serif;">All Events</p>  
-</div>
-<section id="sky" class="sky-bg">
-  
-  <img src="/cloud.svg" alt="Cloud 1" id="cloud1" />
-  <img src="/cloud.svg" alt="Cloud 2" id="cloud2" />
-  <img src="/grass.webp" alt="Grass" id="grass" />
-  <img src="/moon.png" alt="Moon" id="moon" />
-</section>
+          .event-date,
+          .event-location {
+            color: #a8a8c1;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
 
-</header>
-<main class="container">
-<section id="Day1" class="p-5">
-  <style>
-    .event-grid {
-      display: flex;
-      gap: 20px;
-      
-      padding: 50px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    .event-grid::-webkit-scrollbar {
-      height: 8px;
-    }
-    
-    .event-grid::-webkit-scrollbar-thumb {
-      background: #ff5722;
-      border-radius: 4px;
-    }
-    
-    .event-grid::-webkit-scrollbar-track {
-      background: #ffe0b2;
-    }
-    
-    .event-card {
-      flex: 0 0 280px;
-      background: #fff3e0;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      scroll-snap-align: start;
-    }
-    
-    .event-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    }
-    
-    .event-image {
-      height: 180px;
-      background: #ddd;
-      background-size: cover;
-      background-position: center;
-    }
-    
-    .event-details {
-      padding: 15px;
-    }
-    
-    .event-details h3 {
-      font-size: 18px;
-      color: #d84315;
-      margin-bottom: 10px;
-    }
-    
-    .event-date,
-    .event-location {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 8px;
-    }
-    
-    .button-section {
-      display: flex;
-      
-      align-items: center;
-      padding: 10px 15px;
-      border-top: 1px solid #ffccbc;
-      background: #ffe0b2;
-    }
-    
-    .button-section .button {
-      background: #ff3d00;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 5px;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    
-    .button-section .button:hover {
-      background: #d84315;
-    }
-    
-    @media (min-width: 768px) {
-      .event-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        overflow-x: visible;
-        scroll-snap-type: none;
-      }
-    }
-      </style>
+          .event-date::before {
+            content: "📅";
+          }
 
-<p class="headline display-1">Day 1</p>
+          .event-location::before {
+            content: "📍";
+          }
 
-<article class="container event-grid" id="day1Container"></article>
+          .button-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            margin-top: auto; /* Pushes button section to bottom */
+            padding: 1rem;
+            flex-shrink: 0;
+          }
 
-<script>
-  const day1Data = [
-    {
-      title: "University Flag Hoisting",
-      date: "Wed, 05 Mar 2025",
-      time: "09.00 AM to 9.30 AM",
-    location: "GCU Parking",
-  },
-  {
-    title: "Cultural Rally",
-    date: "Wed, 05 Mar 2025",
-    time: "9.30-11.00 AM",
-    location: "",
-  },
-  {
-    title: "Gaming Competition",
-    date: "Wed, 05 Mar 2025",
-    time: "11 - 3 PM onwards",
-    location: "Room No. 408",
-  },
-  {
-    title: "Singing (Solo)",
-    date: "Wed, 05 Mar 2025",
-    time: "12.00 - 5 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Poetry Recitation",
-    date: "Wed, 05 Mar 2025",
-    time: "1.30-3.30 PM",
-    location: "Room No. 512",
-  },
-  {
-    title: "Bridge Making",
-    date: "Wed, 05 Mar 2025",
-    time: "12.00 PM onwards",
-    location: "GCU Lobby",
-  },
-  {
-    title: "Go as You Like",
-    date: "Wed, 05 Mar 2025",
-    time: "3 PM-5 PM",
-    location: "In front of Admission Cell",
-  },
-  {
-    title: "Mehendi",
-    date: "Wed, 05 Mar 2025",
-    time: "1.00 - 4 PM",
-    location: "Corridor near Admission Cell",
-  },
-];
+          .button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-family: "Space Grotesk", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+          }
 
-        function createEventCard(day1) {
-          return `
-                <div class=" event-card">
-                    <div class="event-image" style="background-image: url('${day1.image}')"></div>
-                    <div class="event-details">
-                        <h3>${day1.title}</h3>
-                        <div class="event-date">${day1.date}</div>
-                        <div class="event-location">${day1.location}</div>
-                    </div>
-                    <div class="button-section">
-                       
-                        <button class="button">Details</button>
-                    </div>
-                </div>`;
+          .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+          }
+
+          /* Scroll animation trigger */
+          @keyframes cardEntrance {
+            from {
+              opacity: 0;
+              transform: translateY(50px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          .event-card {
+            animation: cardEntrance 0.6s ease forwards;
+            opacity: 0;
+          }
+
+          .event-card:nth-child(1) {
+            animation-delay: 0.1s;
+          }
+          .event-card:nth-child(2) {
+            animation-delay: 0.2s;
+          }
+          .event-card:nth-child(3) {
+            animation-delay: 0.3s;
+          }
+          .event-card:nth-child(4) {
+            animation-delay: 0.4s;
+          }
+
+          @media (min-width: 768px) {
+            .event-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+              overflow-x: visible;
+              scroll-snap-type: none;
+            }
+          }
+        </style>
+
+        <p class="headline display-1">Day 1</p>
+
+        <article class="container event-grid" id="day1Container"></article>
+
+        <script>
+          const day1Data = [
+            {
+              title: "University Flag Hoisting",
+              date: "Wed, 05 Mar 2025",
+              time: "09.00 AM to 9.30 AM",
+              location: "GCU Parking",
+            },
+            {
+              title: "Cultural Rally",
+              date: "Wed, 05 Mar 2025",
+              time: "9.30-11.00 AM",
+              location: "",
+            },
+            {
+              title: "Gaming Competition",
+              date: "Wed, 05 Mar 2025",
+              time: "11 - 3 PM onwards",
+              location: "Room No. 408",
+            },
+            {
+              title: "Singing (Solo)",
+              date: "Wed, 05 Mar 2025",
+              time: "12.00 - 5 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Poetry Recitation",
+              date: "Wed, 05 Mar 2025",
+              time: "1.30-3.30 PM",
+              location: "Room No. 512",
+            },
+            {
+              title: "Bridge Making",
+              date: "Wed, 05 Mar 2025",
+              time: "12.00 PM onwards",
+              location: "GCU Lobby",
+            },
+            {
+              title: "Go as You Like",
+              date: "Wed, 05 Mar 2025",
+              time: "3 PM-5 PM",
+              location: "In front of Admission Cell",
+            },
+            {
+              title: "Mehendi",
+              date: "Wed, 05 Mar 2025",
+              time: "1.00 - 4 PM",
+              location: "Corridor near Admission Cell",
+            },
+          ];
+
+          function createEventCard(day1) {
+            return `
+           <div class="event-card">
+      <div class="event-details">
+        <h3>${day1.title}</h3>
+        <div class="event-date">${day1.date} • ${day1.time}</div>
+        ${
+          day1.location
+            ? `<div class="event-location">${day1.location}</div>`
+            : ""
         }
+      </div>
+      <div class="button-section">
+        <button class="button">View Details</button>
+      </div>
+    </div>`;
+          }
 
-        document.getElementById("day1Container").innerHTML = day1Data
-          .map(createEventCard)
-          .join("");
-      </script>
-    </section>
+          document.getElementById("day1Container").innerHTML = day1Data
+            .map(createEventCard)
+            .join("");
+        </script>
+      </section>
 
-    <section id="Day2" class="p-5">
-      <p class="headline display-1">Day 2</p>
+      <section id="Day2" class="p-5">
+        <p class="headline display-1">Day 2</p>
 
-      <article class="container event-grid" id="day2Container"></article>
+        <article class="container event-grid" id="day2Container"></article>
+        <script>
+          const day2Data = [
+            {
+              title: "Quiz",
+              date: "Thu, 06 Mar 2025",
+              time: "9.30-1.00 PM",
+              location: "Room No. 408",
+            },
+            {
+              title: "Folk Orchestra (Group)",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00-2.00 PM",
+              location: "Main Stage",
+            },
+            {
+              title: "Singing (Solo)",
+              date: "Thu, 06 Mar 2025",
+              time: "9.30 - 12 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Rangoli",
+              date: "Thu, 06 Mar 2025",
+              time: "1.00-4.00 PM",
+              location: "Corridor, Ground Floor, GCU Main Building",
+            },
+            {
+              title: "Folk Dance (Group)",
+              date: "Thu, 06 Mar 2025",
+              time: "12.00 - 4.00 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Battle of Band (Inter College)",
+              date: "Thu, 06 Mar 2025",
+              time: "3.00-8.00 PM",
+              location: "Main Stage",
+            },
+            {
+              title: "Spot Painting",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00-1.00 PM",
+              location: "Room No. 401",
+            },
+            {
+              title: "Mobile Movie Making Competition",
+              date: "Thu, 06 Mar 2025",
+              time: "2.00 PM-4.00 PM",
+              location: "Room No. 408",
+            },
+            {
+              title: "Handicraft",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00 AM onwards",
+              location: "Stall",
+            },
+            {
+              title: "Photography",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00 AM onwards",
+              location: "Stall",
+            },
+            {
+              title: "Circuitronics",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00 AM onwards",
+              location: "EE Lab",
+            },
+            {
+              title: "Gaming Competition",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00 AM onwards",
+              location: "CSE Dept.",
+            },
+            {
+              title: "Robo Race",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00 AM onwards",
+              location: "GCU Lobby.",
+            },
+            {
+              title: "GCU Hackathon",
+              date: "Thu, 06 Mar 2025",
+              time: "10.00 AM onwards",
+              location: "",
+            },
+          ];
+
+          function createEventCard(day2) {
+            return `
+            <div class="event-card">
+      <div class="event-details">
+        <h3>${day2.title}</h3>
+        <div class="event-date">${day2.date} • ${day2.time}</div>
+        ${
+          day2.location
+            ? `<div class="event-location">${day2.location}</div>`
+            : ""
+        }
+      </div>
+      <div class="button-section">
+        <button class="button">View Details</button>
+      </div>
+    </div>`;
+          }
+
+          document.getElementById("day2Container").innerHTML = day2Data
+            .map(createEventCard)
+            .join("");
+        </script>
+      </section>
+
+      <section id="Day3" class="p-5">
+        <p class="headline display-1">Day 3</p>
+
+        <article class="container event-grid" id="day3Container"></article>
+
+        <script>
+          const day3Data = [
+            {
+              title: "Debate",
+              date: "Fri, 07 Mar 2025",
+              time: "10.00 AM - 02.00 PM",
+              location: "Room No. 512",
+            },
+            {
+              title: "Drama, Skit, Mime Competition",
+              date: "Fri, 07 Mar 2025",
+              time: "10.00 AM - 04.00 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Robo Soccer",
+              date: "Fri, 07 Mar 2025",
+              time: "11.00 AM - 02.00 PM",
+              location: "GCU Lobby",
+            },
+            {
+              title: "Mr. & Miss GCU",
+              date: "Fri, 07 Mar 2025",
+              time: "5.00 PM - 7.00 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Classical Dance",
+              date: "Fri, 07 Mar 2025",
+              time: "12.00 PM - 02.00 PM",
+              location: "Room No. 408",
+            },
+            {
+              title: "Cartoon Art Competition",
+              date: "Fri, 07 Mar 2025",
+              time: "10.00 AM - 01.00 PM",
+              location: "Room No. 401",
+            },
+            {
+              title: "Fun Games",
+              date: "Fri, 07 Mar 2025",
+              time: "11.00 AM onwards",
+              location: "",
+            },
+            {
+              title: "Street Battle",
+              date: "Fri, 07 Mar 2025",
+              time: "3.00 PM - 5.00 PM",
+              location: "GCU Lobby",
+            },
+          ];
+
+          function createEventCard(day3) {
+            return `
+                   <div class="event-card">
+      <div class="event-details">
+        <h3>${day3.title}</h3>
+        <div class="event-date">${day3.date} • ${day3.time}</div>
+        ${
+          day3.location
+            ? `<div class="event-location">${day3.location}</div>`
+            : ""
+        }
+      </div>
+      <div class="button-section">
+        <button class="button">View Details</button>
+      </div>
+    </div>`;
+          }
+
+          document.getElementById("day3Container").innerHTML = day3Data
+            .map(createEventCard)
+            .join("");
+        </script>
+      </section>
+
+      <section id="Day4" class="p-5">
+        <p class="headline display-1">Day 4</p>
+
+        <article class="container event-grid" id="day4Container"></article>
+
+        <script>
+          const day4Data = [
+            {
+              title: "Modern Dance (Solo & Group)",
+              date: "Sat, 08 Mar 2025",
+              time: "10.00 AM - 02.00 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Wall Magazine Competition",
+              date: "Sat, 08 Mar 2025",
+              time: "11:00 AM",
+              location: "GCU Lobby",
+            },
+            {
+              title:
+                "Closing Ceremony, Prize Distribution Ceremony and Cultural Program",
+              date: "Sat, 08 Mar 2025",
+              time: "3.00 PM - 7.30 PM",
+              location: "Auditorium",
+            },
+            {
+              title: "Main Artist",
+              date: "Sat, 08 Mar 2025",
+              time: "8.00 PM - 10.00 PM",
+              location: "Main Stage",
+            },
+          ];
+
+          function createEventCard(day4) {
+            return `
+                    <div class="event-card">
+      <div class="event-details">
+        <h3>${day4.title}</h3>
+        <div class="event-date">${day4.date} • ${day4.time}</div>
+        ${
+          day4.location
+            ? `<div class="event-location">${day4.location}</div>`
+            : ""
+        }
+      </div>
+      <div class="button-section">
+        <button class="button">View Details</button>
+      </div>
+    </div>`;
+          }
+
+          document.getElementById("day4Container").innerHTML = day4Data
+            .map(createEventCard)
+            .join("");
+        </script>
+      </section>
+
       <script>
-        const day2Data = [
-  {
-    title: "Quiz",
-    date: "Thu, 06 Mar 2025",
-    time: "9.30-1.00 PM",
-    location: "Room No. 408",
-  },
-  {
-    title: "Folk Orchestra (Group)",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00-2.00 PM",
-    location: "Main Stage",
-  },
-  {
-    title: "Singing (Solo)",
-    date: "Thu, 06 Mar 2025",
-    time: "9.30 - 12 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Rangoli",
-    date: "Thu, 06 Mar 2025",
-    time: "1.00-4.00 PM",
-    location: "Corridor, Ground Floor, GCU Main Building",
-  },
-  {
-    title: "Folk Dance (Group)",
-    date: "Thu, 06 Mar 2025",
-    time: "12.00 - 4.00 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Battle of Band (Inter College)",
-    date: "Thu, 06 Mar 2025",
-    time: "3.00-8.00 PM",
-    location: "Main Stage",
-  },
-  {
-    title: "Spot Painting",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00-1.00 PM",
-    location: "Room No. 401",
-  },
-  {
-    title: "Mobile Movie Making Competition",
-    date: "Thu, 06 Mar 2025",
-    time: "2.00 PM-4.00 PM",
-    location: "Room No. 408",
-  },
-  {
-    title: "Handicraft",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00 AM onwards",
-    location: "Stall",
-  },
-  {
-    title: "Photography",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00 AM onwards",
-    location: "Stall",
-  },
-  {
-    title: "Circuitronics",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00 AM onwards",
-    location: "EE Lab",
-  },
-  {
-    title: "Gaming Competition",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00 AM onwards",
-    location: "CSE Dept.",
-  },
-  {
-    title: "Robo Race",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00 AM onwards",
-    location: "GCU Lobby.",
-  },
-  {
-    title: "GCU Hackathon",
-    date: "Thu, 06 Mar 2025",
-    time: "10.00 AM onwards",
-    location: "",
-  },
-];
+        document.addEventListener("DOMContentLoaded", function () {
+          // Select both sky elements
+          const skySections = document.querySelectorAll(".sky-bg");
 
-        function createEventCard(event) {
-          return `
-                <div class=" event-card">
-                    <div class="event-image" style="background-image: url('${event.image}')"></div>
-                    <div class="event-details">
-                        <h3>${event.title}</h3>
-                        <div class="event-date">${event.date}</div>
-                        <div class="event-location">${event.location}</div>
-                    </div>
-                    <div class="button-section">
-                       
-                        <button class="button">Details</button>
-                    </div>
-                </div>`;
-        }
+          skySections.forEach((sky) => {
+            // Create stars for each sky section
+            for (let i = 0; i < 50; i++) {
+              // Reduced number for better performance
+              let star = document.createElement("div");
+              star.className = "star";
+              star.style.top = Math.random() * 100 + "%";
+              star.style.left = Math.random() * 100 + "%";
+              star.style.animationDelay = Math.random() * 2 + "s";
+              star.style.animationDuration = Math.random() * 1 + 0.5 + "s"; // Vary animation speed
+              sky.appendChild(star);
+            }
+          });
+        });
 
-        document.getElementById("day2Container").innerHTML = day2Data
-          .map(createEventCard)
-          .join("");
+        window.addEventListener("scroll", function () {
+          let scrollPos = window.scrollY;
+          document.getElementById(
+            "moon"
+          ).style.transform = `translateX(-50%) translateY(${
+            scrollPos * 0.01
+          }px)`;
+          document.getElementById("cloud1").style.transform = `translateX(${
+            scrollPos * 0.1
+          }px)`;
+          document.getElementById("cloud2").style.transform = `translateX(${
+            scrollPos * 0.1
+          }px)`;
+        });
       </script>
-    </section>
-
-    <section id="Day3" class="p-5">
-      <p class="headline display-1">Day 3</p>
-
-      <article class="container event-grid" id="day3Container"></article>
-
-      <script>
-       const day3Data = [
-  {
-    title: "Debate",
-    date: "Fri, 07 Mar 2025",
-    time: "10.00 AM - 02.00 PM",
-    location: "Room No. 512",
-  },
-  {
-    title: "Drama, Skit, Mime Competition",
-    date: "Fri, 07 Mar 2025",
-    time: "10.00 AM - 04.00 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Robo Soccer",
-    date: "Fri, 07 Mar 2025",
-    time: "11.00 AM - 02.00 PM",
-    location: "GCU Lobby",
-  },
-  {
-    title: "Mr. & Miss GCU",
-    date: "Fri, 07 Mar 2025",
-    time: "5.00 PM - 7.00 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Classical Dance",
-    date: "Fri, 07 Mar 2025",
-    time: "12.00 PM - 02.00 PM",
-    location: "Room No. 408",
-  },
-  {
-    title: "Cartoon Art Competition",
-    date: "Fri, 07 Mar 2025",
-    time: "10.00 AM - 01.00 PM",
-    location: "Room No. 401",
-  },
-  {
-    title: "Fun Games",
-    date: "Fri, 07 Mar 2025",
-    time: "11.00 AM onwards",
-    location: "",
-  },
-  {
-    title: "Street Battle",
-    date: "Fri, 07 Mar 2025",
-    time: "3.00 PM - 5.00 PM",
-    location: "GCU Lobby",
-  },
-];
-
-
-        function createEventCard(event) {
-          return `
-                    <div class=" event-card">
-                        <div class="event-image" style="background-image: url('${event.image}')"></div>
-                        <div class="event-details">
-                            <h3>${event.title}</h3>
-                            <div class="event-date">${event.date}</div>
-                            <div class="event-location">${event.location}</div>
-                        </div>
-                        <div class="button-section">
-                           
-                            <button class="button">Details</button>
-                        </div>
-                    </div>`;
-        }
-
-        document.getElementById("day3Container").innerHTML = day3Data
-          .map(createEventCard)
-          .join("");
-      </script>
-    </section>
-
-    <section id="Day4" class="p-5">
-      <p class="headline display-1">Day 4</p>
-
-      <article class="container event-grid" id="day4Container"></article>
-
-      <script>
-        const day4Data = [
-  {
-    title: "Modern Dance (Solo & Group)",
-    date: "Sat, 08 Mar 2025",
-    time: "10.00 AM - 02.00 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Wall Magazine Competition",
-    date: "Sat, 08 Mar 2025",
-    time: "11:00 AM",
-    location: "GCU Lobby",
-  },
-  {
-    title: "Closing Ceremony, Prize Distribution Ceremony and Cultural Program",
-    date: "Sat, 08 Mar 2025",
-    time: "3.00 PM - 7.30 PM",
-    location: "Auditorium",
-  },
-  {
-    title: "Main Artist",
-    date: "Sat, 08 Mar 2025",
-    time: "8.00 PM - 10.00 PM",
-    location: "Main Stage",
-  },
-];
-
-
-        function createEventCard(event) {
-          return `
-                    <div class=" event-card">
-                        <div class="event-image" style="background-image: url('${event.image}')"></div>
-                        <div class="event-details">
-                            <h3>${event.title}</h3>
-                            <div class="event-date">${event.date}</div>
-                            <div class="event-location">${event.location}</div>
-                        </div>
-                        <div class="button-section">
-                           
-                            <button class="button">Details</button>
-                        </div>
-                    </div>`;
-        }
-
-        document.getElementById("day4Container").innerHTML = day4Data
-          .map(createEventCard)
-          .join("");
-      </script>
-    </section>
-
-    <script>
-
-  document.addEventListener("DOMContentLoaded", function () {
-    // Select both sky elements
-    const skySections = document.querySelectorAll('.sky-bg');
-    
-    skySections.forEach(sky => {
-      // Create stars for each sky section
-      for (let i = 0; i < 50; i++) { // Reduced number for better performance
-        let star = document.createElement("div");
-        star.className = "star";
-        star.style.top = Math.random() * 100 + "%";
-        star.style.left = Math.random() * 100 + "%";
-        star.style.animationDelay = Math.random() * 2 + "s";
-        star.style.animationDuration = (Math.random() * 1 + 0.5) + "s"; // Vary animation speed
-        sky.appendChild(star);
-      }
-    });
-  });
-
-
-
-      window.addEventListener("scroll", function () {
-        let scrollPos = window.scrollY;
-        document.getElementById(
-          "moon"
-        ).style.transform = `translateX(-50%) translateY(${scrollPos * 0.01}px)`;
-        document.getElementById("cloud1").style.transform = `translateX(${
-          scrollPos * 0.1
-        }px)`;
-        document.getElementById("cloud2").style.transform = `translateX(${
-          scrollPos * 0.1
-        }px)`;
-      });
-    </script>
     </main>
   </body>
 </html>
